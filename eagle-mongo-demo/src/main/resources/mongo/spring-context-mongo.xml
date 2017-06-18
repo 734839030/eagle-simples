@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xsi:schemaLocation="http://www.springframework.org/schema/context  
+         http://www.springframework.org/schema/context/spring-context-3.0.xsd  
+	           http://www.springframework.org/schema/data/mongo  
+	          http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd  
+         http://www.springframework.org/schema/beans  
+	         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<context:property-placeholder ignore-unresolvable="true" location="classpath*:mongo/mongo.properties" />
+    <mongo:mongo id="mongo" replica-set="${mongo.replica-set}">  
+        <!-- 一些连接属性的设置 -->      
+        <mongo:options  
+        		connections-per-host="${mongo.connectionsPerHost}"
+             threads-allowed-to-block-for-connection-multiplier="${mongo.threadsAllowedToBlockForConnectionMultiplier}"
+                   connect-timeout="${mongo.connectTimeout}"
+                   socket-timeout="${mongo.socketTimeout}"
+                   max-wait-time="${mongo.maxWaitTime}"
+                   auto-connect-retry="${mongo.autoConnectRetry}"
+                   slave-ok="${mongo.slaveOk}"
+                   max-auto-connect-retry-time="10000"
+                   socket-keep-alive="${mongo.socketKeepAlive}"
+                   />              
+	</mongo:mongo>  
+	 <!-- mongodb bean的仓库目录，会自动扫描扩展了Mongo Repository接口的接口进行注入 -->  
+	<mongo:repositories base-package="com.seezoon.eagle.mongo.demo.dao" />        
+	 <!-- mongo的工厂，通过它来取得mongo实例,dbname为mongodb的数据库名，没有的话会自动创建 -->  
+	<mongo:db-factory id="mongoDbFactory" mongo-ref="mongo"  
+		dbname="${mongo.dbname}" />
+	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
+		<constructor-arg name="mongoConverter" ref="mappingMongoConverter" />
+	</bean>
+	
+	 <!-- 映射转换器，扫描back-package目录下的文件，根据注释，把它们作为mongodb的一个collection的映射 -->  
+    <mongo:mapping-converter base-package="com.seezoon.eagle.mongo.demo.dao.entity" />  
+    
+	<!-- 去掉_class属性字段 =====start -->
+    <bean id="mappingContext" class="org.springframework.data.mongodb.core.mapping.MongoMappingContext" />  
+    <!-- 默认Mongodb类型映射 -->  
+    <bean id="defaultMongoTypeMapper" class="org.springframework.data.mongodb.core.convert.DefaultMongoTypeMapper">  
+        <constructor-arg name="typeKey">  
+            <null /><!-- 这里设置为空,可以把 spring data mongodb 多余保存的_class字段去掉 -->  
+        </constructor-arg>  
+    </bean>  
+    <!-- 配置mongodb映射类型 -->  
+    <bean id="mappingMongoConverter" class="org.springframework.data.mongodb.core.convert.MappingMongoConverter">  
+        <constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />  
+        <constructor-arg name="mappingContext" ref="mappingContext" />  
+        <property name="typeMapper" ref="defaultMongoTypeMapper" />  
+    </bean>  
+  	<!-- 去掉_class属性字段===== end -->
+</beans>

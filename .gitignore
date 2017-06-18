@@ -1,0 +1,9 @@
+# for eclipse
+.settings/
+.DS_Store
+.project
+.classpath
+target/
+logs/
+registry/
+*.jar

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:jdbc="http://www.springframework.org/schema/jdbc"  
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:util="http://www.springframework.org/schema/util" xmlns:task="http://www.springframework.org/schema/task" 
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"  
+    xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://code.alibabatech.com/schema/dubbo  http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+	<!-- 加载配置属性文件 -->
+	<context:property-placeholder ignore-unresolvable="true" location="classpath*:dubbo/dubbo.properties" />
+	<!-- 通过注册中心链接监控平台 -->
+	<dubbo:monitor protocol="registry"/>
+    <dubbo:application name="${application.name}" logger="slf4j" owner="${dubbo.application.owner}" />
+    <!-- 注册中心地址 -->  
+    <dubbo:registry address="${dubbo.registry.address}" timeout="100000"  file="../registry/cache"/> 
+    <dubbo:provider />
+    <dubbo:consumer check="false"  listener="" />
+    <dubbo:protocol name="dubbo" port="${dubbo.port}" serialization="${dubbo.serialization}"  />
+    <dubbo:reference id="studentService"   interface="com.seezoon.eagle.dubbo.demo.api.IStudentService" />  
+</beans>
