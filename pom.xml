@@ -24,6 +24,7 @@
     <module>eagle-redis-demo</module>
     <module>eagle-rocketmq-demo</module>
     <module>eagle-amq-demo</module>
+    <module>eagle-web-demo</module>
   </modules>
   <build>
 		<plugins>

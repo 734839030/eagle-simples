@@ -28,11 +28,11 @@
 		init-method="start" destroy-method="shutdown">
 		<property name="namesrvAddr" value="${rocketmq.namesrvAddr}"></property>
 		<property name="consumerGroup" value="${rocketmq.consumerGroup}"></property>
-<!-- 		<property name="messageListener" ref="demoConcurrentlyMessageListener"></property>
- -->		<property name="messageListener" ref="demoOrderlyMessageListener"></property>
-		<property name="subscription">
+		<property name="messageListener" ref="demoConcurrentlyMessageListener"></property>
+<!--  		<property name="messageListener" ref="demoOrderlyMessageListener"></property>
+ -->		<property name="subscription">
 			<map>
-				<!-- 队列名  tag 发送消息可以加tag 按tag筛选-->
+				<!-- 队列名  tag 发送消息可以加tag 按tag筛选，* 为全部-->
 				<entry key="TopicTest" value="*"></entry>
 			</map>
 		</property>

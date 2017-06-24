@@ -12,6 +12,10 @@ public class DemoConcurrentlyMessageListener extends AbstractMessageListenerConc
 	
 	@Override
 	public boolean handleMessage(MessageExt messageExt) {
+		String tags = messageExt.getTags();
+		if ("mytag".equals(tags)) {
+			logger.debug("this is tag msg ,you can handle it by some other way.");
+		}
 		try {
 			logger.debug("DemoConcurrentlyMessageListener consume  msgId :{},borntime:{},content:{}",messageExt.getMsgId(), new Date(messageExt.getBornTimestamp()), new String(messageExt.getBody()));
 		} catch (Exception e) {

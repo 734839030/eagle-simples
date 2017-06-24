@@ -46,7 +46,7 @@ public class TestDefaultMqProducer extends BaseJunitTest{
 		} 
 	}
 	/**
-	 * 关心发送结果
+	 * 异步发送，关心发送结果
 	 */
 	@Test
 	public void  sendCallback(){
@@ -66,7 +66,6 @@ public class TestDefaultMqProducer extends BaseJunitTest{
 			});
 			System.in.read();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 	}
@@ -85,7 +84,20 @@ public class TestDefaultMqProducer extends BaseJunitTest{
 			defaultMQProducer.send(new Message("TopicTest", "hello rocketmq5".getBytes()) , messageQueueSelector, 1);
 			System.in.read();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	}
+	/**
+	 * 有序消息 接收需要用MessageListenerOrderly  保证发入一个queue 就可以 利用MessageQueueSelector
+	 */
+	@Test
+	public void sendTagMsg(){
+		Message msg = new Message("TopicTest", "hello rocketmq tag".getBytes()) ;
+		msg.setTags("mytag");
+		try {
+			defaultMQProducer.sendOneway(msg);
+			System.in.read();
+		} catch (Exception e) {
 			e.printStackTrace();
 		} 
 	}
