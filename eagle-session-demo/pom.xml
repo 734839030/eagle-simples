@@ -7,15 +7,20 @@
     <artifactId>eagle-simples</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>eagle-web-demo</artifactId>
+  <artifactId>eagle-session-demo</artifactId>
   <version>${eagle.version}</version>
 	<name>${project.artifactId}</name>
   <packaging>war</packaging>
   <url>http://maven.apache.org</url>
   <dependencies>
-  		<dependency> 
+  	<dependency> 
 			<groupId>com.seezoon</groupId>
 			<artifactId>eagle-web</artifactId>
+			<version>${eagle.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.seezoon</groupId>
+			<artifactId>eagle-session</artifactId>
 			<version>${eagle.version}</version>
 		</dependency>
 		<dependency>
@@ -24,8 +29,8 @@
 			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
-  </dependencies> 
+  </dependencies>
   <build>
-    <finalName>eagle-web-demo</finalName>
+    <finalName>eagle-session-demo</finalName>
   </build>
 </project>

@@ -25,6 +25,7 @@
     <module>eagle-rocketmq-demo</module>
     <module>eagle-amq-demo</module>
     <module>eagle-web-demo</module>
+    <module>eagle-session-demo</module>
   </modules>
   <build>
 		<plugins>
