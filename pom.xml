@@ -143,4 +143,14 @@
 			<url>http://192.168.221.128:8888/nexus/content/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
+	<repositories>
+    <repository>
+        <id>Mynexus</id>
+        <name>Mynexus</name>
+        <url>http://192.168.221.128:8888/nexus/content/groups/public/</url>
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
+    </repository>
+</repositories>
 </project>
