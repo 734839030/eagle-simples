@@ -30,17 +30,17 @@
   </dependencies>
   <!-- 打包 -->
 	<build>
-		<finalName>eagle-dubbo-demo-provider</finalName>
+		<finalName>${project.artifactId}</finalName>
 		<resources>
 			<resource>
-				<targetPath>${project.build.directory}/classes</targetPath>
+				<targetPath>${project.build.directory}/classes</targetPath> 
 				<directory>src/main/resources</directory>
 				<filtering>true</filtering>
 				<includes>
 					<include>**/*.xml</include>
 					<include>**/*.properties</include>
 				</includes>
-			</resource>
+			</resource> 
 			<!-- 结合com.alibaba.dubbo.container.Main -->
 			<resource>
 				<targetPath>${project.build.directory}/classes/META-INF/spring</targetPath>

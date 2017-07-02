@@ -31,6 +31,6 @@
 		</dependency>
   </dependencies>
   <build>
-    <finalName>eagle-session-demo</finalName>
+		<finalName>${project.artifactId}</finalName>
   </build>
 </project>
