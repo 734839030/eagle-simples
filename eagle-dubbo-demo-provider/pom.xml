@@ -38,7 +38,6 @@
 				<filtering>true</filtering>
 				<includes>
 					<include>**/*.xml</include>
-					<!-- <include>log4j.properties</include> -->
 					<include>**/*.properties</include>
 				</includes>
 			</resource>
@@ -49,7 +48,6 @@
 				<filtering>true</filtering>
 				<includes>
 					<include>spring-context*.xml</include>
-					<!-- <include>dubbo-context-provider.xml</include> -->
 				</includes>
 			</resource>
 		</resources>

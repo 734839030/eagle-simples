@@ -1,19 +1,20 @@
 <?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>com.seezoon</groupId>
-    <artifactId>eagle-simples</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  <artifactId>eagle-web-demo</artifactId>
-  <version>${eagle.version}</version>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.seezoon</groupId>
+		<artifactId>eagle-simples</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>eagle-web-demo</artifactId>
+	<version>${eagle.version}</version>
 	<name>${project.artifactId}</name>
-  <packaging>war</packaging>
-  <url>http://maven.apache.org</url>
-  <dependencies>
-  		<dependency> 
+	<packaging>war</packaging>
+	<url>http://maven.apache.org</url>
+	<dependencies>
+		<dependency>
 			<groupId>com.seezoon</groupId>
 			<artifactId>eagle-web</artifactId>
 			<version>${eagle.version}</version>
@@ -24,8 +25,34 @@
 			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
-  </dependencies> 
-  <build>
-    <finalName>eagle-web-demo</finalName>
-  </build>
+
+	</dependencies>
+	<build>
+		<finalName>${${project.artifactId}}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.2.10.v20150310</version>
+				<configuration>
+					<connectors>
+						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+							<port>8080</port>
+							<maxIdleTime>60000</maxIdleTime>
+						</connector>
+					</connectors>
+					<stopKey>shutdown</stopKey>
+					<!-- jetty:stop -->
+					<stopPort>8005</stopPort>
+					<!-- <scanIntervalSeconds>2</scanIntervalSeconds> -->
+					<!-- 默认值为 automatic，它与大于 0 的 scanIntervalSeconds 节点一起作用，实现自动热部署的工作。设为 
+						manual 的好处是，当你改变文件 内容并保存时，不会马上触发自动扫描和重部署的动作，你还可以继续的修改，直至你在 Console 或命令行中敲回车键（Enter）的时候才触发重新加载的动作。这样可以更加的方便调试修改。 -->
+					<reload>manual</reload>
+					<webApp>
+						<contextPath>/${project.artifactId}</contextPath>
+					</webApp>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

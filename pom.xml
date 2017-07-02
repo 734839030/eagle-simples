@@ -26,6 +26,7 @@
     <module>eagle-amq-demo</module>
     <module>eagle-web-demo</module>
     <module>eagle-session-demo</module>
+    <module>eagle-job-demo</module>
   </modules>
   <build>
 		<plugins>
@@ -41,11 +42,13 @@
 				</configuration>
 			</plugin>
 			<!-- 跳过测试的 -->
+			<!-- 跳过测试的 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.10</version>
 				<configuration>
+					<skipTests>true</skipTests>
 					<testFailureIgnore>true</testFailureIgnore>
 				</configuration>
 			</plugin>
