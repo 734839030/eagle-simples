@@ -11,7 +11,7 @@ import com.seezoon.eagle.core.test.BaseJunitTest;
  * @author hdf
  *
  */
-public class DemoSimpleJobHandlerTest extends BaseJunitTest{
+public class DemoJobHandlerTest extends BaseJunitTest{
 
 	@Test
 	public void start() throws IOException{
