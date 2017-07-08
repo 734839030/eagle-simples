@@ -28,6 +28,7 @@
 		<module>eagle-web-demo</module>
 		<module>eagle-session-demo</module>
 		<module>eagle-job-demo</module>
+		<module>eagle-lock-demo</module>
 	</modules>
 	<build>
 		<pluginManagement>
