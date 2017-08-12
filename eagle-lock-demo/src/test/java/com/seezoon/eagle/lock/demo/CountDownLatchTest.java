@@ -42,6 +42,5 @@ public class CountDownLatchTest extends BaseJunitTest{
             }
         });
 	    latch.await();
-	    logger.info("task all completed.");
-	}
+	    logger.info("task all completed.");	}
 }
