@@ -42,6 +42,7 @@
 						</connector>
 					</connectors>
 					<stopKey>shutdown</stopKey>
+					<!-- jetty:run -->
 					<!-- jetty:stop -->
 					<stopPort>8005</stopPort>
 					<!-- <scanIntervalSeconds>2</scanIntervalSeconds> -->

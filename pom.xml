@@ -29,6 +29,7 @@
 		<module>eagle-job-demo</module>
 		<module>eagle-lock-demo</module>
     <module>eagle-conf-demo</module>
+    <module>eagle-httpclient-demo</module>
   </modules>
 	<build>
 		<pluginManagement>

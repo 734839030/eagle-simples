@@ -25,10 +25,10 @@
                     <constructor-arg name="host" value="${redis.host1}"></constructor-arg>
                	    <constructor-arg name="port" value="26379"></constructor-arg>                   
                 </bean>
-                <bean class="org.springframework.data.redis.connection.RedisNode">
+               <!--  <bean class="org.springframework.data.redis.connection.RedisNode">
                     <constructor-arg name="host" value="${redis.host1}"/>
                     <constructor-arg name="port" value="26380"/>               
-                </bean>
+                </bean> -->
             </set>
         </property>
    </bean> 
