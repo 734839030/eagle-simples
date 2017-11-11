@@ -2,9 +2,9 @@ package com.seezoon.eagle.mybatis.demo.entity;
 
 import java.util.Date;
 
-import com.seezoon.eagle.mybatis.persistence.BaseEntity;
+import com.seezoon.eagle.mybatis.dao.BaseEntity;
 
-public class Student implements BaseEntity{
+public class Student extends BaseEntity{
     private Integer id;
 
     private String name;

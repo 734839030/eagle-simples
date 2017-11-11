@@ -19,7 +19,7 @@
         <property name="dataSource" ref="dataSource"/>
         <!-- 自动别名 -->
         <property name="typeAliasesPackage" value="com.seezoon.eagle.mybatis.demo.entity"/>
-        <property name="typeAliasesSuperType" value="com.seezoon.eagle.mybatis.persistence.BaseEntity"/>
+        <property name="typeAliasesSuperType" value="com.seezoon.eagle.mybatis.dao.BaseEntity"/>
         <!-- 扫描sql文件 -->
         <property name="mapperLocations" value="classpath:datasource/mappings/**/*.xml"/>
         <!-- mybatis 设置及插件 -->
@@ -28,9 +28,9 @@
     <!-- 扫描basePackage下所有BaseDao子类接口 -->
     <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
-        <property name="basePackage" value="com.seezoon.eagle.mybatis.demo.dao"/>
+        <property name="basePackage" value="com.seezoon.eagle.mybatis.demo.mapper"/>
         <!-- 找到BaseDao的子类 -->
-        <property name="markerInterface" value="com.seezoon.eagle.mybatis.persistence.BaseDao"/>
+        <property name="markerInterface" value="com.seezoon.eagle.mybatis.mapper.BaseMapper"/>
     </bean>
     <!-- 定义事务 -->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

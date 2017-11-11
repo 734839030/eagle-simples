@@ -119,7 +119,7 @@
 							<outputDirectory>
 								${project.build.directory}/lib
 							</outputDirectory>
-						</configuration>
+						</configuration> 
 					</execution>
 				</executions>
 			</plugin>
