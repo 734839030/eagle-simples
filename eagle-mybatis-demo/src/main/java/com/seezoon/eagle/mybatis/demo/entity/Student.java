@@ -5,6 +5,7 @@ import java.util.Date;
 import com.seezoon.eagle.mybatis.dao.BaseEntity;
 
 public class Student extends BaseEntity{
+	
     private Integer id;
 
     private String name;

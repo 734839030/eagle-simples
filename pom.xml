@@ -28,7 +28,6 @@
 		<module>eagle-session-demo</module>
 		<module>eagle-job-demo</module>
 		<module>eagle-lock-demo</module>
-    <module>eagle-conf-demo</module>
     <module>eagle-httpclient-demo</module>
   </modules>
 	<build>
@@ -143,18 +142,18 @@
 	<distributionManagement>
 		<repository>
 			<id>releases</id>
-			<url>http://192.168.221.128:8888/nexus/content/repositories/releases</url>
+			<url>http://192.168.221.133:8888/nexus/content/repositories/releases</url>
 		</repository>
 		<snapshotRepository>
 			<id>snapshots</id>
-			<url>http://192.168.221.128:8888/nexus/content/repositories/snapshots</url>
+			<url>http://192.168.221.133:8888/nexus/content/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
 	<repositories>
     <repository>
         <id>Mynexus</id>
         <name>Mynexus</name>
-        <url>http://192.168.221.128:8888/nexus/content/groups/public/</url>
+        <url>http://192.168.221.133:8888/nexus/content/groups/public/</url>
         <snapshots>
             <enabled>true</enabled>
         </snapshots>

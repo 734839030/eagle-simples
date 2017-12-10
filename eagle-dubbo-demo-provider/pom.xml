@@ -33,6 +33,7 @@
 		<finalName>${project.artifactId}</finalName>
 		<resources>
 			<resource>
+			    <!-- classes 指加在jar内，去掉则和jar 评级 -->
 				<targetPath>${project.build.directory}/classes</targetPath> 
 				<directory>src/main/resources</directory>
 				<filtering>true</filtering>
